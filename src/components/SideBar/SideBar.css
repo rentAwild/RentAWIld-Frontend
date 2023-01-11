@@ -1,15 +1,14 @@
-.nav-bar{
-    position: absolute;
+.nav-bar {
+  position: absolute;
 }
 
-.logo-container{
-    margin-left:50%;
-    position:relative;
-    top:-60px;
+.logo-container {
+  margin-left: 50%;
+  position: relative;
+  top: -60px;
 }
 
-
-.logo{
-    border-radius: 50%;
-    width:15%;
+.logo {
+  border-radius: 50%;
+  width: 15%;
 }

@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import * as FaIcons from "react-icons/fa";
-import * as AiIcons from "react-icons/ai";
 import { IconContext } from "react-icons/lib";
 import { SidebarData } from "./SideBarData";
 import SubMenu from "./SubMenu";
@@ -45,7 +44,7 @@ const SidebarWrap = styled.div`
 `;
 
 function Sidebar() {
-  const [sidebar, setSidebar] = useState(false);
+  const [sidebar, setSidebar] = useState(true);
 
   const showSidebar = () => setSidebar(!sidebar);
 
@@ -54,7 +53,7 @@ function Sidebar() {
     <IconContext.Provider value={{ color: "#fff" }}>
       <Nav>
         <NavIcon to="#">
-          <FaIcons.FaBars onClick={showSidebar} />
+          <FaIcons.FaBars /* onClick={showSidebar} */ />
         </NavIcon>
       </Nav>
       <div className="logo-container">

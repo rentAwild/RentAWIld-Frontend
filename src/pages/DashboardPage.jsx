@@ -7,7 +7,9 @@ function DashboardPage() {
   return (
     <div>
       <SideBar />
-      <DashboardComponent />
+      <div className="dashboard">
+        <DashboardComponent />
+      </div>
     </div>
   );
 }
