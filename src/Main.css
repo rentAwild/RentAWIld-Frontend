@@ -1,0 +1,26 @@
+:root {
+  /* MAIN*/
+  --main-color-1: #258999;
+  --main-color-1: #1b6470;
+  --main-color-3: #f8feff;
+  /*SHADES*/
+  --shade-1: #303030;
+  --shade2: #757575;
+  --shade-3: #adadad;
+  --shade-4: #f5f5f5;
+  --shade-5: #fafafa;
+  /*ERROR/SUCCESS*/
+  --error-1: #ec4f52;
+  --error-2: #fefafa;
+  --sucess-1: #2bc86b;
+  --sucess-2: #f1fff7;
+  /*TYPOGRAPHY*/
+  --h1: 32pt;
+  --h2: 26pt;
+  --h3: 24pt;
+  --h4: 20pt;
+  --text-reg: 18pt;
+  --text-sm: 16pt;
+  --caption: 10pt;
+  --bold: 600;
+}
