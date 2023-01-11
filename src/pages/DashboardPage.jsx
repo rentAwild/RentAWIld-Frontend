@@ -1,5 +1,5 @@
 import React from "react";
-import VerticalBar from "../components/VerticalBar";
+import VerticalBar from "../components/VerticalBar/VerticalBar";
 
 function DashboardPage() {
   return (
