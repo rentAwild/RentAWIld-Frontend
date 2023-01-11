@@ -6,6 +6,8 @@ import * as AiIcons from "react-icons/ai";
 import { IconContext } from "react-icons/lib";
 import { SidebarData } from "./SideBarData";
 import SubMenu from "./SubMenu";
+import Logo from "../../assets/rentAwild-logo.png";
+import "./SideBar.css";
 
 const Nav = styled.div`
   background: #15171c;
@@ -55,7 +57,10 @@ function Sidebar() {
           <FaIcons.FaBars onClick={showSidebar} />
         </NavIcon>
       </Nav>
-      <SidebarNav sidebar={sidebar}>
+      <div className="logo-container">
+        <img alt="logo" className="logo" src={Logo} />
+      </div>
+      <SidebarNav className="nav-bar" sidebar={sidebar}>
         <SidebarWrap>
           <NavIcon to="#">
             <AiIcons.AiOutlineClose onClick={showSidebar} />
