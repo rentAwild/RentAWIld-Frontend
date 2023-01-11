@@ -14,7 +14,7 @@ import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import { CognitoUser, AuthenticationDetails } from "amazon-cognito-identity-js";
 import UserPool from "../UserPool";
 
-function LoginPage() {
+function SignInPage() {
   const navigate = useNavigate();
 
   const theme = createTheme({
@@ -64,19 +64,6 @@ function LoginPage() {
         console.log("newPasswordRequired ", data);
       },
     });
-    // to test signing up
-    /* UserPool.signUp(
-      userDetails.email,
-      userDetails.password,
-      [],
-      null,
-      (err, data) => {
-        if (err) {
-          console.error(err);
-        }
-        console.log(data);
-      }
-    ); */
   };
   return (
     <div>
@@ -180,4 +167,4 @@ function LoginPage() {
   );
 }
 
-export default LoginPage;
+export default SignInPage;
