@@ -1,30 +1,29 @@
-.nav{
+.nav {
   display: flex;
-  justify-content: flex-end!important;
+  justify-content: flex-end !important;
 }
 
 .nav-bar {
   position: absolute;
 }
 
-.nav-welcome{
+.nav-welcome {
   display: flex;
   justify-content: right;
   align-items: center;
 }
 
-.welcome-text{
-  color:white;
+.welcome-text {
+  color: white;
 }
 
-.welcome-logo{
-width: 5%;
+.welcome-logo {
+  width: 5%;
 }
 
-.burguer-icon{
+.burguer-icon {
   display: none;
 }
-
 
 .logo-container {
   margin-left: 50%;

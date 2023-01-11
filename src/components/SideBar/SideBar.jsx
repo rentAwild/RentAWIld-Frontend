@@ -55,10 +55,12 @@ function Sidebar() {
       <Nav className="nav">
         <div className="nav-welcome">
           <p className="welcome-text">Hello Admin</p>
-          <img alt="user" className="welcome-logo" src={LogoUser}></img>
+          <img alt="user" className="welcome-logo" src={LogoUser} />
         </div>
         <NavIcon to="#">
-          <FaIcons.FaBars className="burguer-icon" /* onClick={showSidebar} */ />
+          <FaIcons.FaBars
+            className="burguer-icon" /* onClick={showSidebar} */
+          />
         </NavIcon>
       </Nav>
       <div className="logo-container">
