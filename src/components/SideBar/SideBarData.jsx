@@ -7,7 +7,7 @@ import * as RiIcons from "react-icons/ri";
 // eslint-disable-next-line import/prefer-default-export
 export const SidebarData = [
   {
-    title: "Overview",
+    title: "Cars",
     /* path: "/overview", */
     icon: <AiIcons.AiFillHome />,
     iconClosed: <RiIcons.RiArrowDownSFill />,
@@ -15,12 +15,17 @@ export const SidebarData = [
 
     subNav: [
       {
-        title: "Users",
+        title: "Available",
         /* path: "/overview/users", */
         icon: <IoIcons.IoIosPaper />,
       },
       {
-        title: "Revenue",
+        title: "Booked",
+        /* path: "/overview/revenue", */
+        icon: <IoIcons.IoIosPaper />,
+      },
+      {
+        title: "Maintenance",
         /* path: "/overview/revenue", */
         icon: <IoIcons.IoIosPaper />,
       },
@@ -52,11 +57,6 @@ export const SidebarData = [
         icon: <IoIcons.IoIosPaper />,
       },
     ],
-  },
-  {
-    title: "Products",
-    /* path: "/products", */
-    icon: <FaIcons.FaCartPlus />,
   },
   {
     title: "Team",
