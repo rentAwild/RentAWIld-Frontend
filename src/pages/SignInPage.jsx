@@ -1,4 +1,6 @@
 import * as React from "react";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
@@ -9,8 +11,12 @@ import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
+import { CognitoUser, AuthenticationDetails } from "amazon-cognito-identity-js";
+import UserPool from "../UserPool";
 
-function LoginPage() {
+function SignInPage() {
+  const navigate = useNavigate();
+
   const theme = createTheme({
     status: {
       danger: "#e53e3e",
@@ -26,7 +32,39 @@ function LoginPage() {
       },
     },
   });
+  // create states for the variables
+  const [userDetails, setUserDetails] = useState({ email: "", password: "" });
+  // create function to manage and validate input changes
+  const handleChange = (event) => {
+    setUserDetails({ ...userDetails, [event.target.name]: event.target.value });
+  };
+  const handleSubmit = (event) => {
+    event.preventDefault();
 
+    // authenticating user with cognito
+    const user = new CognitoUser({
+      Username: userDetails.email,
+      Pool: UserPool,
+    });
+
+    const authDetails = new AuthenticationDetails({
+      Username: userDetails.email,
+      Password: userDetails.password,
+    });
+
+    user.authenticateUser(authDetails, {
+      onSuccess: (data) => {
+        console.log("onSuccess: ", data);
+        navigate("/dashboard");
+      },
+      onFailure: (err) => {
+        console.error(err);
+      },
+      newPasswordRequired: (data) => {
+        console.log("newPasswordRequired ", data);
+      },
+    });
+  };
   return (
     <div>
       <ThemeProvider theme={theme}>
@@ -72,7 +110,7 @@ function LoginPage() {
               <Box
                 component="form"
                 noValidate
-                /* onSubmit={handleSubmit} */
+                onSubmit={handleSubmit}
                 sx={{ mt: 1 }}
               >
                 <TextField
@@ -84,6 +122,8 @@ function LoginPage() {
                   name="email"
                   autoComplete="email"
                   autoFocus
+                  value={userDetails.email}
+                  onChange={handleChange}
                 />
                 <TextField
                   margin="normal"
@@ -94,6 +134,8 @@ function LoginPage() {
                   type="password"
                   id="password"
                   autoComplete="current-password"
+                  value={userDetails.password}
+                  onChange={handleChange}
                 />
                 <Button
                   type="submit"
@@ -111,7 +153,7 @@ function LoginPage() {
                     </Link>
                   </Grid> */}
                   <Grid item>
-                    <Link href="/sign up" variant="body2">
+                    <Link href="/signUp" variant="body2">
                       Don't have an account? Sign Up
                     </Link>
                   </Grid>
@@ -125,4 +167,4 @@ function LoginPage() {
   );
 }
 
-export default LoginPage;
+export default SignInPage;
