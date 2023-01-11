@@ -5,7 +5,7 @@ import "./DashboardPage.css";
 
 function DashboardPage() {
   return (
-    <div className="dashboard-page">
+    <div>
       <SideBar />
       <DashboardComponent />
     </div>
