@@ -1,12 +1,15 @@
 import React from "react";
-import VerticalBar from "../components/VerticalBar/VerticalBar";
-import DashboardComponent from "../components/DashboardComponent/DashboardComponent";
+import DashboardComponent from "@components/DashboardComponent/DashboardComponent";
+import SideBar from "../components/SideBar/SideBar";
+import "./DashboardPage.css";
 
 function DashboardPage() {
   return (
     <div>
-      <VerticalBar />
-      <DashboardComponent />
+      <SideBar />
+      <div className="dashboard">
+        <DashboardComponent />
+      </div>
     </div>
   );
 }
