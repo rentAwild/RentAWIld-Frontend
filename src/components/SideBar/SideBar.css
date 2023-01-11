@@ -5,11 +5,11 @@
 .logo-container{
     margin-left:50%;
     position:relative;
-    top:20px;
+    top:-60px;
 }
 
 
 .logo{
     border-radius: 50%;
-    width:20%;
+    width:15%;
 }

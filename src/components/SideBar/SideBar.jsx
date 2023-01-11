@@ -63,7 +63,7 @@ function Sidebar() {
       <SidebarNav className="nav-bar" sidebar={sidebar}>
         <SidebarWrap>
           <NavIcon to="#">
-            <AiIcons.AiOutlineClose onClick={showSidebar} />
+            {/* <AiIcons.AiOutlineClose onClick={showSidebar} /> */}
           </NavIcon>
           {SidebarData.map((item, index) => {
             // eslint-disable-next-line react/no-array-index-key
