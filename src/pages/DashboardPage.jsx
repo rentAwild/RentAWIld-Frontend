@@ -1,11 +1,12 @@
 import React from "react";
 import VerticalBar from "../components/VerticalBar/VerticalBar";
+import DashboardComponent from "../components/DashboardComponent/DashboardComponent";
 
 function DashboardPage() {
   return (
     <div>
-      <h1>DashboardPage</h1>
       <VerticalBar />
+      <DashboardComponent />
     </div>
   );
 }
