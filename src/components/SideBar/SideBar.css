@@ -15,10 +15,13 @@
 
 .welcome-text {
   color: white;
+  font-size: 18px;
 }
 
 .welcome-logo {
   width: 5%;
+  color: white;
+  padding: 10px;
 }
 
 .burguer-icon {

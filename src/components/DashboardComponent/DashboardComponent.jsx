@@ -116,7 +116,6 @@ function DashboardComponent() {
           {cars &&
             cars.map((element, key) => {
               return (
-                // eslint-disable-next-line react/no-array-index-key
                 <Grid item xs={4} key={key}>
                   <Card sx={{ maxWidth: 345 }}>
                     <CardMedia

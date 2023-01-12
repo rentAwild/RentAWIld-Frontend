@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 /* eslint-disable no-unused-vars */
 import * as React from "react";
 import { useState, useContext } from "react";
@@ -61,6 +62,8 @@ function SignInPage() {
         // setEmail(userDetails.email);
         fetchUser(userDetails.email);
         navigate("/dashboard");
+        localStorage.setItem("detail", id);
+        // localStorage.getItem("detail");
       },
       onFailure: (err) => {
         console.error(err);
