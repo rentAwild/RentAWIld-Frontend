@@ -16,10 +16,10 @@ function DashboardPage() {
     if (localStorage.getItem("userType") !== 0) {
       setTypeOfUser(localStorage.getItem("userType"));
     }
-    if (localStorage.getItem("userType") !== 0) {
+    if (localStorage.getItem("userName") !== 0) {
       setUserName(localStorage.getItem("userName"));
     }
-    if (localStorage.getItem("userType") !== 0) {
+    if (localStorage.getItem("userId") !== 0) {
       setUserId(localStorage.getItem("userId"));
     }
   }, []);
