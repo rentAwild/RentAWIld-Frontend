@@ -26,14 +26,14 @@ function DashboardComponent(props) {
   // eslint-disable-next-line react/destructuring-assignment
   // console.log(props.type);
 
-  const [carId, setCarId] = useState(null);
+  // const [carId, setCarId] = useState(null);
 
-  const goToCarEditor = (event) => {
-    setCarId(event.target.getAttribute("id"));
-    navigate("/editcar");
-    console.log(parseInt(event.target.getAttribute("id")));
-    console.log(carId);
-  };
+  // const goToCarEditor = (event) => {
+  //   setCarId(event.target.getAttribute("id"));
+  //   navigate("/editcar");
+  //   console.log(parseInt(event.target.getAttribute("id")));
+  //   console.log(carId);
+  // };
 
   return (
     <div>
@@ -49,7 +49,7 @@ function DashboardComponent(props) {
           {cars &&
             cars.map((element) => {
               return (
-                <Grid item xs={4} key={key}>
+                <Grid item xs={4} key={element.id}>
                   <Card sx={{ maxWidth: 345 }}>
                     <CardMedia
                       sx={{ height: 140 }}
