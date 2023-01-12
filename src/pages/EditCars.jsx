@@ -45,7 +45,6 @@ function EditCars() {
           setMaintenance(form.elements[3].checked)
       );
   }, []);
-
   // * Function to set up the Adding Kilometers to car # ========== #
   const updateCarKilometers = () => {
     setKilometersAdd(parseInt(form.elements[0].value));
@@ -58,6 +57,8 @@ function EditCars() {
 
   // * Function to Submit Form # ========== #
   const submitForm = () => {
+    console.log(form.elements[3].checked)
+
     alert(kilometersAdd + " where added to this car!");
     if (kilometersAdd !== 0 || kilometersAdd !== null) {
       alert(`This car has ${kilometersNow} Km's now!`);
@@ -161,7 +162,9 @@ function EditCars() {
           </div>
         </li>
         <li className="editCarFormListItem">
-          <label htmlFor="maintenance">Is this car going to maintenance? {maintenance?"Yes":"No"}</label>
+          <label htmlFor="maintenance">
+            Is this car going to maintenance? {maintenance ? "Yes" : "No"}
+          </label>
           <input
             type="checkbox"
             id="maintenance"
