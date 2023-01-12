@@ -10,7 +10,6 @@ import SignUpPage from "./pages/SignUpPage";
 
 import EditCars from "./pages/EditCars";
 
-
 import Booking from "./components/Booking/Booking";
 
 import LandingPage from "./pages/LandingPage";
