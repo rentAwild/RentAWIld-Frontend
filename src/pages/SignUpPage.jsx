@@ -187,7 +187,7 @@ function LoginPage() {
                   </Grid> */}
                   <Grid item>
                     <Link href="/signIn" variant="body2">
-                      {"Already have an account? Sign In"}
+                      Already have an account? Sign In
                     </Link>
                   </Grid>
                 </Grid>
