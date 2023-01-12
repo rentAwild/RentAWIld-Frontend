@@ -38,7 +38,7 @@ function DashboardComponent(props) {
   const [max_price, setMax_price] = useState(500);
   const [min_price, setMin_price] = useState(0);
   const [allTypes, setAllTypes] = useState();
-  const [inputValue, setInputValue] = useState();
+  const [inputValue, setInputValue] = useState("");
 
   const fetchTypes = () => {
     axios
