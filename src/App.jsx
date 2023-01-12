@@ -4,7 +4,6 @@ import { Routes, Route } from "react-router-dom";
 import DashboardPage from "./pages/DashboardPage";
 import SignInPage from "./pages/SignInPage";
 import SignUpPage from "./pages/SignUpPage";
-import DashboardPage from "./pages/DashboardPage";
 import Booking from "./components/Booking/Booking";
 import LandingPage from "./pages/LandingPage";
 import { CarContextProvider } from "./contexts/CarContext";
