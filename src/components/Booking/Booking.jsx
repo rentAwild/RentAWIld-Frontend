@@ -75,7 +75,7 @@ function Booking() {
       <br />
       <DatePicker
         dateFormat="dd-MM-yyyy"
-        selectsRange={true}
+        selectsRange
         startDate={startDate}
         endDate={endDate}
         onChange={(update) => {
