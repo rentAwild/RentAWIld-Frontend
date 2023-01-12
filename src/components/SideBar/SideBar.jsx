@@ -55,6 +55,7 @@ const SidebarWrap = styled.div`
 
 function Sidebar(props) {
   const [sidebar, setSidebar] = useState(true);
+  // console.log(props);
 
   // eslint-disable-next-line no-unused-vars
   const showSidebar = () => setSidebar(!sidebar);
