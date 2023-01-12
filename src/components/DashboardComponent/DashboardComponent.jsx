@@ -73,7 +73,6 @@ function DashboardComponent(props) {
     CompanyName,
     max_price,
     min_price,
-    carName,
   };
 
   useEffect(() => {
@@ -94,6 +93,7 @@ function DashboardComponent(props) {
   const handleInputChange = (event) => {
     event.preventDefault();
     setInputValue(event.target.value);
+    setName(event.target.value);
     console.log(event.target.value);
   };
   const handleInputSubmit = (event) => {
@@ -170,7 +170,6 @@ function DashboardComponent(props) {
               onChange={handleInputChange}
             />
           </label>
-          <input type="submit" value="Submit" />
         </form>
       </div>
       <br />
@@ -187,11 +186,11 @@ function DashboardComponent(props) {
                         <CardMedia
                           sx={{ height: 140 }}
                           image={element.image}
-                          title={element.name}
+                          title={element.carName}
                         />
                         <CardContent>
                           <Typography gutterBottom variant="h5" component="div">
-                            {element.name}
+                            {element.carName}
                           </Typography>
                           <Typography variant="body2" color="text.secondary">
                             {element.daily_price}
@@ -219,19 +218,62 @@ function DashboardComponent(props) {
                     </Grid>
                   );
                 })
-            : cars &&
-              cars.map((element, key) => {
+            : cars && inputValue
+            ? cars
+                .filter((car) => {
+                  return car.carName.includes(inputValue);
+                })
+                .map((element, key) => {
+                  return (
+                    <Grid item xs={4} key={key}>
+                      <Card sx={{ maxWidth: 345 }}>
+                        <CardMedia
+                          sx={{ height: 140 }}
+                          image={element.image}
+                          title={element.carName}
+                        />
+                        <CardContent>
+                          <Typography gutterBottom variant="h5" component="div">
+                            {element.carName}
+                          </Typography>
+                          <Typography variant="body2" color="text.secondary">
+                            {element.daily_price}
+                          </Typography>
+                          <Typography variant="body2" color="text.secondary">
+                            {element.type}
+                          </Typography>
+                        </CardContent>
+                        <CardActions>
+                          {props.type === "user" ? (
+                            <a
+                              href={`http://localhost:3000/book/${element.id}`}
+                            >
+                              Learn More
+                            </a>
+                          ) : props.type === "company" ? (
+                            <a
+                              href={`http://localhost:3000/edit/${element.id}`}
+                            >
+                              Learn More
+                            </a>
+                          ) : null}
+                        </CardActions>
+                      </Card>
+                    </Grid>
+                  );
+                })
+            : cars.map((element, key) => {
                 return (
                   <Grid item xs={4} key={key}>
                     <Card sx={{ maxWidth: 345 }}>
                       <CardMedia
                         sx={{ height: 140 }}
                         image={element.image}
-                        title={element.name}
+                        title={element.carName}
                       />
                       <CardContent>
                         <Typography gutterBottom variant="h5" component="div">
-                          {element.name}
+                          {element.carName}
                         </Typography>
                         <Typography variant="body2" color="text.secondary">
                           {element.daily_price}
