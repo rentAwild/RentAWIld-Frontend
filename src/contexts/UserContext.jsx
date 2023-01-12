@@ -24,26 +24,6 @@ export function UserContextProvider({ children }) {
         console.error("Error:", error);
       });
   };
-<<<<<<< HEAD
-  const [users, setUsers] = useState([]);
-
-  const fetchAllUser = () => {
-    axios
-      .get(`http://localhost:5000/users`)
-      .then((response) => {
-        setUsers(response.data);
-      })
-      .catch((error) => {
-        // setUserNotFound(true);
-        console.error("Error:", error);
-      });
-  };
-  // Loading the data on mounting
-  useEffect(() => fetchAllUser(), []);
-
-  console.log(users);
-=======
->>>>>>> 6355d1293dd32d506adf90ae8998c88bdb497d5d
 
   return (
     <UserContext.Provider

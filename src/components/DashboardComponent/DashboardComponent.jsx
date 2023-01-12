@@ -49,34 +49,6 @@ function DashboardComponent(props) {
           {cars &&
             cars.map((element) => {
               return (
-<<<<<<< HEAD
-                // eslint-disable-next-line react/no-array-index-key
-                <Grid item xs={4}>
-                  <div id={element.id} key={element.id} onClick={goToCarEditor}>
-                    <Card sx={{ maxWidth: 345 }}>
-                      <CardMedia
-                        sx={{ height: 140 }}
-                        image={element.image}
-                        title={element.name}
-                      />
-                      <CardContent>
-                        <Typography gutterBottom variant="h5" component="div">
-                          {element.name}
-                        </Typography>
-                        <Typography variant="body2" color="text.secondary">
-                          {element.daily_price}
-                        </Typography>
-                        <Typography variant="body2" color="text.secondary">
-                          {element.type}
-                        </Typography>
-                      </CardContent>
-                      <CardActions>
-                        <Button size="small">Share</Button>
-                        <Button size="small">Learn More</Button>
-                      </CardActions>
-                    </Card>
-                  </div>
-=======
                 <Grid item xs={4} key={key}>
                   <Card sx={{ maxWidth: 345 }}>
                     <CardMedia
@@ -100,7 +72,6 @@ function DashboardComponent(props) {
                       <Button size="small">Learn More</Button>
                     </CardActions>
                   </Card>
->>>>>>> 6355d1293dd32d506adf90ae8998c88bdb497d5d
                 </Grid>
               );
             })}
