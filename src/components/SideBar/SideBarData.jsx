@@ -7,19 +7,19 @@ import * as IoIcons from "react-icons/io";
 export const SidebarUserData = [
   {
     title: "Cars Overview",
-    /* path: "/overview", */
+    path: "/dashboard",
     icon: <AiIcons.AiFillHome />,
   },
   {
     title: " My Bookings",
-    /* path: "/reports", */
+    path: "/bookings",
     icon: <IoIcons.IoIosPaper />,
   },
 ];
 export const SidebarCompanyData = [
   {
     title: "Fleet Overview",
-    /* path: "/overview", */
+    path: "/dashboard",
     icon: <AiIcons.AiFillHome />,
   },
   {

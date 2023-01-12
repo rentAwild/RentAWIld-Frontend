@@ -61,6 +61,8 @@ function SignInPage() {
         // setEmail(userDetails.email);
         fetchUser(userDetails.email);
         navigate("/dashboard");
+        localStorage.setItem("detail", id);
+        // localStorage.getItem("detail");
       },
       onFailure: (err) => {
         console.error(err);

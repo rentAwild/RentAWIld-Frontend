@@ -25,7 +25,6 @@ function DashboardComponent(props) {
 
   return (
     <div>
-      <h1>{props.type}</h1>
       <Box
         className="search-bar"
         sx={{ display: "flex", alignItems: "flex-end" }}

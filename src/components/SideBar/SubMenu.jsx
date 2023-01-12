@@ -48,7 +48,7 @@ function SubMenu({ item }) {
   const showSubnav = () => setSubnav(!subnav);
 
   return (
-    <>
+    <div>
       <SidebarLink to={item.path} onClick={item.subNav && showSubnav}>
         <div>
           {item.icon}
@@ -62,18 +62,7 @@ function SubMenu({ item }) {
             : null}
         </div>
       </SidebarLink>
-      {/* {subnav &&
-        // eslint-disable-next-line no-shadow
-        item.subNav.map((item, index) => {
-          return (
-            // eslint-disable-next-line react/no-array-index-key
-            <DropdownLink to={item.path} key={index}>
-              {item.icon}
-              <SidebarLabel>{item.title}</SidebarLabel>
-            </DropdownLink>
-          );
-        })} */}
-    </>
+    </div>
   );
 }
 

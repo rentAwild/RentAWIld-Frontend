@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import * as FaIcons from "react-icons/fa";
 import { IconContext } from "react-icons/lib";
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import {
   SidebarUserData,
   SidebarAdminData,
@@ -60,7 +61,8 @@ function Sidebar(props) {
       <Nav className="nav">
         <div className="nav-welcome">
           <p className="welcome-text">Hello {props.type}</p>
-          <img alt="user" className="welcome-logo" src={LogoUser} />
+          <AccountCircleIcon fontSize="large" className="welcome-logo" />
+          {/* <img alt="user" className="welcome-logo" src={LogoUser} /> */}
         </div>
         <NavIcon to="#">
           <FaIcons.FaBars
