@@ -1,3 +1,4 @@
+/* eslint-disable no-nested-ternary */
 /* eslint-disable eqeqeq */
 // eslint-disable-next-line react/destructuring-assignment
 /* eslint-disable react/no-array-index-key */
@@ -26,12 +27,10 @@ import UserContext from "../../contexts/UserContext";
 import "./DashboardComponent.css";
 
 function DashboardComponent(props) {
-  const { userId } = useContext(UserContext);
   // eslint-disable-next-line react/destructuring-assignment
   const { cars, fetchCars } = useContext(CarContext);
 
   const navigate = useNavigate();
-  /*   console.log(props.type); */
   const [carName, setName] = useState();
   const [type, setType] = useState();
   const [CompanyName, setCompanyName] = useState();
@@ -60,7 +59,6 @@ function DashboardComponent(props) {
     min_price,
     carName,
   };
-  /*  console.log(Obj) */
 
   useEffect(() => {
     fetchCars(Obj);
@@ -75,6 +73,7 @@ function DashboardComponent(props) {
     setType(event.target.value);
   };
   const [carId, setCarId] = useState(null);
+
   return (
     <div>
       <div className="filters">
@@ -121,10 +120,51 @@ function DashboardComponent(props) {
       <br />
       <Box sx={{ flexGrow: 1 }}>
         <Grid container spacing={2}>
-          {cars &&
-            cars
-              .filter((e) => e.user_id == userId)
-              .map((element, key) => {
+          {props.type === "company"
+            ? cars &&
+              cars
+                .filter((e) => e.user_id == props.userId)
+                .map((element, key) => {
+                  return (
+                    <Grid item xs={4} key={key}>
+                      <Card sx={{ maxWidth: 345 }}>
+                        <CardMedia
+                          sx={{ height: 140 }}
+                          image={element.image}
+                          title={element.name}
+                        />
+                        <CardContent>
+                          <Typography gutterBottom variant="h5" component="div">
+                            {element.name}
+                          </Typography>
+                          <Typography variant="body2" color="text.secondary">
+                            {element.daily_price}
+                          </Typography>
+                          <Typography variant="body2" color="text.secondary">
+                            {element.type}
+                          </Typography>
+                        </CardContent>
+                        <CardActions>
+                          {props.type === "user" ? (
+                            <a
+                              href={`http://localhost:3000/book/${element.id}`}
+                            >
+                              Learn More
+                            </a>
+                          ) : props.type === "company" ? (
+                            <a
+                              href={`http://localhost:3000/edit/${element.id}`}
+                            >
+                              Learn More
+                            </a>
+                          ) : null}
+                        </CardActions>
+                      </Card>
+                    </Grid>
+                  );
+                })
+            : cars &&
+              cars.map((element, key) => {
                 return (
                   <Grid item xs={4} key={key}>
                     <Card sx={{ maxWidth: 345 }}>
@@ -145,9 +185,15 @@ function DashboardComponent(props) {
                         </Typography>
                       </CardContent>
                       <CardActions>
-                        <a href={`http://localhost:3000/booking/${element.id}`}>
-                          Learn More
-                        </a>
+                        {props.type === "user" ? (
+                          <a href={`http://localhost:3000/book/${element.id}`}>
+                            Learn More
+                          </a>
+                        ) : props.type === "company" ? (
+                          <a href={`http://localhost:3000/edit/${element.id}`}>
+                            Learn More
+                          </a>
+                        ) : null}
                       </CardActions>
                     </Card>
                   </Grid>

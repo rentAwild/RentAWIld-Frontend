@@ -55,7 +55,6 @@ const SidebarWrap = styled.div`
 
 function Sidebar(props) {
   const [sidebar, setSidebar] = useState(true);
-  console.log(props);
 
   // eslint-disable-next-line no-unused-vars
   const showSidebar = () => setSidebar(!sidebar);
@@ -65,7 +64,7 @@ function Sidebar(props) {
     <IconContext.Provider value={{ color: "#fff" }}>
       <Nav className="nav">
         <div className="nav-welcome">
-          <p className="welcome-text">Hello {props.type}</p>
+          <p className="welcome-text">Hello {props.userName}</p>
           <AccountCircleIcon fontSize="large" className="welcome-logo" />
           {/* <img alt="user" className="welcome-logo" src={LogoUser} /> */}
         </div>
