@@ -1,9 +1,15 @@
+/* eslint-disable no-nested-ternary */
 import React, { useState } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import * as FaIcons from "react-icons/fa";
 import { IconContext } from "react-icons/lib";
-import { SidebarData } from "./SideBarData";
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import {
+  SidebarUserData,
+  SidebarAdminData,
+  SidebarCompanyData,
+} from "./SideBarData";
 import SubMenu from "./SubMenu";
 import Logo from "../../assets/rentAwild-logo.png";
 import LogoUser from "../../assets/welcome-logo.png";
@@ -29,7 +35,7 @@ const NavIcon = styled(Link)`
 
 const SidebarNav = styled.nav`
   background: #15171c;
-  width: 250px;
+  width: 15%;
   height: 100vh;
   display: flex;
   justify-content: center;
@@ -44,9 +50,11 @@ const SidebarWrap = styled.div`
   width: 100%;
 `;
 
-function Sidebar() {
+function Sidebar(props) {
   const [sidebar, setSidebar] = useState(true);
+  console.log(props);
 
+  // eslint-disable-next-line no-unused-vars
   const showSidebar = () => setSidebar(!sidebar);
 
   return (
@@ -54,8 +62,9 @@ function Sidebar() {
     <IconContext.Provider value={{ color: "#fff" }}>
       <Nav className="nav">
         <div className="nav-welcome">
-          <p className="welcome-text">Hello Admin</p>
-          <img alt="user" className="welcome-logo" src={LogoUser} />
+          <p className="welcome-text">Hello {props.type}</p>
+          <AccountCircleIcon fontSize="large" className="welcome-logo" />
+          {/* <img alt="user" className="welcome-logo" src={LogoUser} /> */}
         </div>
         <NavIcon to="#">
           <FaIcons.FaBars
@@ -71,10 +80,25 @@ function Sidebar() {
           <NavIcon to="#">
             {/* <AiIcons.AiOutlineClose onClick={showSidebar} /> */}
           </NavIcon>
+          {props.type === "company"
+            ? SidebarCompanyData.map((item, index) => {
+                // eslint-disable-next-line react/no-array-index-key
+                return <SubMenu item={item} key={index} />;
+              })
+            : props.type === "admin"
+            ? SidebarAdminData.map((item, index) => {
+                // eslint-disable-next-line react/no-array-index-key
+                return <SubMenu item={item} key={index} />;
+              })
+            : SidebarUserData.map((item, index) => {
+                // eslint-disable-next-line react/no-array-index-key
+                return <SubMenu item={item} key={index} />;
+              })}
+          {/* {" "}
           {SidebarData.map((item, index) => {
             // eslint-disable-next-line react/no-array-index-key
             return <SubMenu item={item} key={index} />;
-          })}
+          })}{" "} */}
         </SidebarWrap>
       </SidebarNav>
     </IconContext.Provider>

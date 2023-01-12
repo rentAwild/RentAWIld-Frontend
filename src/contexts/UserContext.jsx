@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-no-constructed-context-values */
 /* eslint-disable react/prop-types */
-import { useState, useEffect, createContext } from "react";
+import { useState, createContext } from "react";
 import axios from "axios";
 
 const UserContext = createContext();
@@ -8,21 +8,23 @@ export default UserContext;
 export function UserContextProvider({ children }) {
   // creating the states for the variables
   const [typeOfUser, setTypeOfUser] = useState([]);
-  // const [email, setEmail] = useState([]);
-
-  //   const email = "admin@email";
+  const [userId, setUserId] = useState();
 
   const fetchUser = (email) => {
     axios
       .get(`http://localhost:5000/users/type?email=${email}`)
       .then((response) => {
+        /*         console.log(response.data); */
         setTypeOfUser(response.data[0][0][0].type);
+        localStorage.setItem("userType", response.data[0][0][0].type);
+
+        setUserId(response.data[0][0][0].id);
       })
       .catch((error) => {
-        // setUserNotFound(true);
         console.error("Error:", error);
       });
   };
+<<<<<<< HEAD
   const [users, setUsers] = useState([]);
 
   const fetchAllUser = () => {
@@ -40,6 +42,8 @@ export function UserContextProvider({ children }) {
   useEffect(() => fetchAllUser(), []);
 
   console.log(users);
+=======
+>>>>>>> 6355d1293dd32d506adf90ae8998c88bdb497d5d
 
   return (
     <UserContext.Provider
@@ -48,6 +52,8 @@ export function UserContextProvider({ children }) {
         typeOfUser,
         setTypeOfUser,
         /*   setEmail, */
+        setUserId,
+        userId,
       }}
     >
       {children}
