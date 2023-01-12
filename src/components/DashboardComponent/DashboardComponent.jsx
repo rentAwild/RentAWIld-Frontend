@@ -118,9 +118,9 @@ function DashboardComponent() {
       <Box sx={{ flexGrow: 1 }}>
         <Grid container spacing={2}>
           {cars &&
-            cars.map((element, key) => {
+            cars.map((element) => {
               return (
-                <Grid item xs={4} key={key}>
+                <Grid item xs={4} key={element.id}>
                   <Card sx={{ maxWidth: 345 }}>
                     <CardMedia
                       sx={{ height: 140 }}

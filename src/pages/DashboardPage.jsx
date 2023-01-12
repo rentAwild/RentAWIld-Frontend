@@ -11,7 +11,7 @@ function DashboardPage() {
   const [typeOfUser, setTypeOfUser] = useState("");
 
   useEffect(() => {
-    if (localStorage.getItem("userType").length !== 0) {
+    if (localStorage.getItem("userType") !== 0) {
       setTypeOfUser(localStorage.getItem("userType"));
     }
   }, []);
