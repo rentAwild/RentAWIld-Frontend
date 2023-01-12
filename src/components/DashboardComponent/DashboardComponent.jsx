@@ -19,12 +19,12 @@ import "./DashboardComponent.css";
 
 function DashboardComponent(props) {
   const { cars } = useContext(CarContext);
+  // console.log(cars);
   // eslint-disable-next-line react/destructuring-assignment
-  console.log(props.type);
+  // console.log(props.type);
 
   return (
     <div>
-      <h1>{props.type}</h1>
       <Box
         className="search-bar"
         sx={{ display: "flex", alignItems: "flex-end" }}
@@ -37,7 +37,6 @@ function DashboardComponent(props) {
           {cars &&
             cars.map((element, key) => {
               return (
-                // eslint-disable-next-line react/no-array-index-key
                 <Grid item xs={4} key={key}>
                   <Card sx={{ maxWidth: 345 }}>
                     <CardMedia

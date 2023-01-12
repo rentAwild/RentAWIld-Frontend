@@ -8,9 +8,6 @@ export default UserContext;
 export function UserContextProvider({ children }) {
   // creating the states for the variables
   const [typeOfUser, setTypeOfUser] = useState([]);
-  // const [email, setEmail] = useState([]);
-
-  //   const email = "admin@email";
 
   const fetchUser = (email) => {
     axios
@@ -19,7 +16,6 @@ export function UserContextProvider({ children }) {
         setTypeOfUser(response.data[0][0][0].type);
       })
       .catch((error) => {
-        // setUserNotFound(true);
         console.error("Error:", error);
       });
   };

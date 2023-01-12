@@ -11,7 +11,7 @@ export function CarContextProvider({ children }) {
 
   const fetchCars = () => {
     axios
-      .get(`http://localhost:5000/cars`)
+      .get(`http://localhost:5000/Cars`)
       .then((response) => {
         setCars(response.data);
       })
