@@ -9,25 +9,39 @@ import "./DashboardPage.css";
 function DashboardPage() {
   // const { typeOfUser } = useContext(UserContext);
   const [typeOfUser, setTypeOfUser] = useState("");
+  const [userName, setUserName] = useState("");
+  const [userId, setUserId] = useState("");
 
   useEffect(() => {
     if (localStorage.getItem("userType") !== 0) {
       setTypeOfUser(localStorage.getItem("userType"));
     }
+    if (localStorage.getItem("userType") !== 0) {
+      setUserName(localStorage.getItem("userName"));
+    }
+    if (localStorage.getItem("userType") !== 0) {
+      setUserId(localStorage.getItem("userId"));
+    }
   }, []);
-  /* useEffect(() => fetchUser(), [email]); */
-  // eslint-disable-next-line no-restricted-syntax
-  /*   console.log(typeOfUser);
-   */ return (
+
+  return (
     <div>
-      <SideBar type={typeOfUser} />
+      <SideBar type={typeOfUser} userId={userId} userName={userName} />
       <div className="dashboard">
         {typeOfUser === "admin" ? (
-          <DashboardComponent type="admin" />
+          <DashboardComponent
+            type="admin"
+            userId={userId}
+            userName={userName}
+          />
         ) : typeOfUser === "company" ? (
-          <DashboardComponent type="company" />
+          <DashboardComponent
+            type="company"
+            userId={userId}
+            userName={userName}
+          />
         ) : (
-          <DashboardComponent type="user" />
+          <DashboardComponent type="user" userId={userId} userName={userName} />
         )}
       </div>
     </div>
