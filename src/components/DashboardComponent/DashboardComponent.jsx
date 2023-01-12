@@ -139,8 +139,9 @@ function DashboardComponent(props) {
           name="dropdownBox"
           value={CompanyName}
           onChange={handleCompanyChange}
+          className="select-company"
         >
-          <option value="All">Select a company:</option>
+          <option  value="All">Select a company:</option>
           {Companies &&
             Companies.map((element, i) => (
               <option value={element.name} key={i}>
@@ -149,7 +150,7 @@ function DashboardComponent(props) {
             ))}
         </select>
         <label htmlFor="dropdownBox"> </label>
-        <select name="dropdownBox" value={type} onChange={handleTypeChange}>
+        <select className="select-car" name="dropdownBox" value={type} onChange={handleTypeChange}>
           <option value="All">Select a car type:</option>
           {allTypes &&
             allTypes.map((element, i) => (
