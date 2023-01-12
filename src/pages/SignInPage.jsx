@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import * as React from "react";
 import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
@@ -18,7 +19,7 @@ import UserPool from "../UserPool";
 
 function SignInPage() {
   const navigate = useNavigate();
-  const { email, setEmail, fetchUser } = useContext(UserContext);
+  const { /* email, setEmail, */ fetchUser } = useContext(UserContext);
 
   const theme = createTheme({
     status: {
@@ -57,7 +58,6 @@ function SignInPage() {
 
     user.authenticateUser(authDetails, {
       onSuccess: (data) => {
-        console.log("onSuccess: ", data);
         // setEmail(userDetails.email);
         fetchUser(userDetails.email);
         navigate("/dashboard");
@@ -68,7 +68,8 @@ function SignInPage() {
         console.error(err);
       },
       newPasswordRequired: (data) => {
-        console.log("newPasswordRequired ", data);
+        /* 
+        console.log("newPasswordRequired ", data); */
       },
     });
   };

@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-no-constructed-context-values */
 /* eslint-disable react/prop-types */
-import { useState, useEffect, createContext } from "react";
+import { useState, createContext } from "react";
 import axios from "axios";
 
 const UserContext = createContext();
