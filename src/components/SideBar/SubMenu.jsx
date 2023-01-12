@@ -62,7 +62,7 @@ function SubMenu({ item }) {
             : null}
         </div>
       </SidebarLink>
-      {subnav &&
+      {/* {subnav &&
         // eslint-disable-next-line no-shadow
         item.subNav.map((item, index) => {
           return (
@@ -72,7 +72,7 @@ function SubMenu({ item }) {
               <SidebarLabel>{item.title}</SidebarLabel>
             </DropdownLink>
           );
-        })}
+        })} */}
     </>
   );
 }

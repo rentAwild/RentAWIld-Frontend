@@ -11,7 +11,7 @@ function DashboardPage() {
   console.log(typeOfUser);
   return (
     <div>
-      <SideBar />
+      <SideBar type={typeOfUser} />
       <div className="dashboard">
         {typeOfUser === "admin" ? (
           <DashboardComponent type="admin" />
