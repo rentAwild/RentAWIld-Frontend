@@ -59,7 +59,7 @@ function Sidebar(props) {
 
   // eslint-disable-next-line no-unused-vars
   const showSidebar = () => setSidebar(!sidebar);
-
+  console.log(props);
   return (
     // eslint-disable-next-line react/jsx-no-constructed-context-values
     <IconContext.Provider value={{ color: "#fff" }}>

@@ -1,5 +1,5 @@
 import * as React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
@@ -9,7 +9,7 @@ import CarRentalIcon from "@mui/icons-material/CarRental";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import Sidebar from "../SideBar/SideBar";
+import SideBar from "../SideBar/SideBar";
 import "./AddCar.css";
 
 function AddCar() {
@@ -60,9 +60,24 @@ function AddCar() {
         console.error(err);
       });
   };
+  const [typeOfUser, setTypeOfUser] = useState("");
+  const [userName, setUserName] = useState("");
+  const [userId, setUserId] = useState("");
+
+  useEffect(() => {
+    if (localStorage.getItem("userType") !== 0) {
+      setTypeOfUser(localStorage.getItem("userType"));
+    }
+    if (localStorage.getItem("userName") !== 0) {
+      setUserName(localStorage.getItem("userName"));
+    }
+    if (localStorage.getItem("userId") !== 0) {
+      setUserId(localStorage.getItem("userId"));
+    }
+  }, []);
   return (
     <>
-      <Sidebar />
+      <SideBar type={typeOfUser} userId={userId} userName={userName} />{" "}
       <div className="addCar-container">
         <ThemeProvider theme={theme}>
           <Container component="main" maxWidth="xs">

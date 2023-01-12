@@ -4,8 +4,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import DatePicker from "react-datepicker";
-import Sidebar from "@components/SideBar/SideBar";
-
+import SideBar from "@components/SideBar/SideBar";
 import "./Booking.css";
 import "react-datepicker/dist/react-datepicker.css";
 
@@ -71,10 +70,25 @@ function Booking() {
         }
       });
   };
+  const [typeOfUser, setTypeOfUser] = useState("");
+  const [userName, setUserName] = useState("");
+  const [userId, setUserId] = useState("");
+
+  useEffect(() => {
+    if (localStorage.getItem("userType") !== 0) {
+      setTypeOfUser(localStorage.getItem("userType"));
+    }
+    if (localStorage.getItem("userName") !== 0) {
+      setUserName(localStorage.getItem("userName"));
+    }
+    if (localStorage.getItem("userId") !== 0) {
+      setUserId(localStorage.getItem("userId"));
+    }
+  }, []);
 
   return (
     <>
-      <Sidebar />
+      <SideBar type={typeOfUser} userId={userId} userName={userName} />
 
       <div className="booking-container">
         {/* <div className="banner">
