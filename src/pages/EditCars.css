@@ -1,23 +1,35 @@
-.editCarBody {
-  margin-top: 100px;
+.editCarForm {
+  margin-top: 50px;
 }
-
+img {
+    max-width: 30vw;
+    justify-items: center;
+    border-radius: 5px;
+    padding: 10px;
+}
 .editCarForm {
   font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
     "Lucida Sans", Arial, sans-serif;
-  filter: drop-shadow(30px 10px 4px rgba(103, 103, 103, 0.5));
+  filter: drop-shadow(30px 10px 4px rgba(103, 103, 103, 0.2));
   list-style: none;
-  width: 60vw;
+  width: 45vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   padding: 0;
   margin: auto auto;
 }
 .editCarFormListItem {
+  background-color: rgb(74, 74, 74);
+  box-shadow: rgba(103, 103, 103, 0.2) 0 15px 30px -5px;
   width: 40vw;
   color: rgb(232, 232, 232);
   font-size: larger;
+  display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: 50px;
+  margin: 5px;
   border-radius: 10px;
 }
 input {
@@ -35,28 +47,24 @@ h4 {
   scale: 150%;
 }
 
-.carEditKilometers {
-  background-color: rgb(74, 74, 74);
-  box-shadow: rgba(103, 103, 103, 1) 0 15px 30px -5px;
-}
 .carEditKilometersAdd {
   display: flex;
   flex-direction: row;
 }
-.carEditKilometersInput {
-  width: 100px;
+.carEditKilometersInput, .carPriceUpdate {
+  width: 80px;
 }
 
 .carEditMaintenance {
   background-color: rgb(74, 74, 74);
-  box-shadow: rgba(103, 103, 103, 1) 0 15px 30px -5px;
+  box-shadow: rgba(103, 103, 103, 0.2) 0 15px 30px -5px;
   display: flex;
   flex-direction: row;
 }
 
 .carEditButtons {
   margin: 0;
-  width: 50vw;
+  width: 40vw;
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
@@ -66,7 +74,7 @@ h4 {
   background-image: linear-gradient(144deg, #000000, #6f6f6f 50%, #5b5b5b);
   border: 0;
   border-radius: 8px;
-  box-shadow: rgba(103, 103, 103, 1) 0 15px 30px -5px;
+  box-shadow: rgba(103, 103, 103, 0.2) 0 15px 30px -5px;
   box-sizing: border-box;
   color: #fafafa;
   display: flex;
