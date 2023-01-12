@@ -2,10 +2,10 @@
   margin-top: 50px;
 }
 img {
-    max-width: 30vw;
-    justify-items: center;
-    border-radius: 5px;
-    padding: 10px;
+  max-width: 30vw;
+  justify-items: center;
+  border-radius: 5px;
+  padding: 10px;
 }
 .editCarForm {
   font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
@@ -51,7 +51,8 @@ h4 {
   display: flex;
   flex-direction: row;
 }
-.carEditKilometersInput, .carPriceUpdate {
+.carEditKilometersInput,
+.carPriceUpdate {
   width: 80px;
 }
 
