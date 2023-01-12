@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable no-nested-ternary */
 import React, { useContext, useEffect, useState } from "react";
 import DashboardComponent from "../components/DashboardComponent/DashboardComponent";
@@ -10,14 +11,14 @@ function DashboardPage() {
   const [typeOfUser, setTypeOfUser] = useState("");
 
   useEffect(() => {
-    if (localStorage.getItem("userType").length !== 0) {
+    if (localStorage.getItem("userType") !== 0) {
       setTypeOfUser(localStorage.getItem("userType"));
     }
   }, []);
   /* useEffect(() => fetchUser(), [email]); */
   // eslint-disable-next-line no-restricted-syntax
-  console.log(typeOfUser);
-  return (
+  /*   console.log(typeOfUser);
+   */ return (
     <div>
       <SideBar type={typeOfUser} />
       <div className="dashboard">
