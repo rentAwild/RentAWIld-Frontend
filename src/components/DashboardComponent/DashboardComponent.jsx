@@ -1,3 +1,4 @@
+// eslint-disable-next-line react/destructuring-assignment
 /* eslint-disable react/no-array-index-key */
 /* eslint-disable no-unused-vars */
 /* eslint-disable camelcase */
@@ -6,6 +7,7 @@
 /* eslint-disable no-restricted-syntax */
 import * as React from "react";
 import { useContext, useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import Box from "@mui/material/Box";
 /* import TextField from "@mui/material/TextField";
 import SearchIcon from "@mui/icons-material/Search"; */
@@ -23,7 +25,8 @@ import "./DashboardComponent.css";
 
 function DashboardComponent() {
   const { cars, fetchCars } = useContext(CarContext);
-  // eslint-disable-next-line react/destructuring-assignment
+
+  const navigate = useNavigate();
   /*   console.log(props.type); */
   const [carName, setName] = useState();
   const [type, setType] = useState();
@@ -67,6 +70,7 @@ function DashboardComponent() {
   const handleChange = (event) => {
     setType(event.target.value);
   };
+  const [carId, setCarId] = useState(null);
   return (
     <div>
       <div className="filters">

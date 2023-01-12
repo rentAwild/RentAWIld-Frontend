@@ -20,7 +20,8 @@ import UserPool from "../UserPool";
 
 function SignInPage() {
   const navigate = useNavigate();
-  const { /* email, setEmail, */ fetchUser } = useContext(UserContext);
+  const { /* email, setEmail, */ fetchUser, userId, setUserId } =
+    useContext(UserContext);
 
   const theme = createTheme({
     status: {
@@ -61,9 +62,9 @@ function SignInPage() {
       onSuccess: (data) => {
         // setEmail(userDetails.email);
         fetchUser(userDetails.email);
+        // localStorage.setItem("userID", userId);
         navigate("/dashboard");
-        localStorage.setItem("detail", id);
-        // localStorage.getItem("detail");
+        // localStorage.getItem("userID");
       },
       onFailure: (err) => {
         console.error(err);
