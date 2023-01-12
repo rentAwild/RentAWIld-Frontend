@@ -25,9 +25,6 @@ export function UserContextProvider({ children }) {
       });
   };
 
-  // Loading the data on mounting
-  /* useEffect(() => fetchUser(), [email]); */
-
   return (
     <UserContext.Provider
       value={{
