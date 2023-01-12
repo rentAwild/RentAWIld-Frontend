@@ -37,4 +37,14 @@
 .logo {
   border-radius: 50%;
   width: 15%;
+  animation: spin 5s infinite linear;
+}
+
+@keyframes spin {
+    from {
+        transform: scale(1) rotate(0deg);
+    }
+    to {
+        transform: scale(1) rotate(360deg);
+    }
 }
