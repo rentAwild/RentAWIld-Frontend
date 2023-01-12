@@ -1,5 +1,6 @@
+/* eslint-disable no-unused-vars */
 import * as React from "react";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
@@ -12,10 +13,13 @@ import Typography from "@mui/material/Typography";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import { CognitoUser, AuthenticationDetails } from "amazon-cognito-identity-js";
+import UserContext from "../contexts/UserContext";
+
 import UserPool from "../UserPool";
 
 function SignInPage() {
   const navigate = useNavigate();
+  const { /* email, setEmail, */ fetchUser } = useContext(UserContext);
 
   const theme = createTheme({
     status: {
@@ -54,14 +58,18 @@ function SignInPage() {
 
     user.authenticateUser(authDetails, {
       onSuccess: (data) => {
-        console.log("onSuccess: ", data);
+        // setEmail(userDetails.email);
+        fetchUser(userDetails.email);
         navigate("/dashboard");
+        localStorage.setItem("detail", id);
+        // localStorage.getItem("detail");
       },
       onFailure: (err) => {
         console.error(err);
       },
       newPasswordRequired: (data) => {
-        console.log("newPasswordRequired ", data);
+        /* 
+        console.log("newPasswordRequired ", data); */
       },
     });
   };
@@ -154,7 +162,7 @@ function SignInPage() {
                   </Grid> */}
                   <Grid item>
                     <Link href="/signUp" variant="body2">
-                      {"Don't have an account? Sign Up"}
+                      Don't have an account? Sign Up
                     </Link>
                   </Grid>
                 </Grid>

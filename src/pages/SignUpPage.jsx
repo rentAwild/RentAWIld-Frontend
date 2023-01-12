@@ -1,3 +1,4 @@
+/* eslint-disable no-restricted-syntax */
 import * as React from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -187,7 +188,7 @@ function LoginPage() {
                   </Grid> */}
                   <Grid item>
                     <Link href="/signIn" variant="body2">
-                      {"Already have an account? Sign In"}
+                      Already have an account? Sign In
                     </Link>
                   </Grid>
                 </Grid>

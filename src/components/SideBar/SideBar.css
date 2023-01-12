@@ -1,0 +1,40 @@
+.nav {
+  display: flex;
+  justify-content: flex-end !important;
+}
+
+.nav-bar {
+  position: absolute;
+}
+
+.nav-welcome {
+  display: flex;
+  justify-content: right;
+  align-items: center;
+}
+
+.welcome-text {
+  color: white;
+  font-size: 18px;
+}
+
+.welcome-logo {
+  width: 5%;
+  color: white;
+  padding: 10px;
+}
+
+.burguer-icon {
+  display: none;
+}
+
+.logo-container {
+  margin-left: 50%;
+  position: relative;
+  top: -60px;
+}
+
+.logo {
+  border-radius: 50%;
+  width: 15%;
+}
