@@ -1,3 +1,4 @@
+/* eslint-disable no-use-before-define */
 import { useEffect, useRef, useState } from "react";
 import { DateRange } from "react-date-range";
 
@@ -31,7 +32,6 @@ function DateRangeComp() {
 
   // hide dropdown on ESC press
   const hideOnEscape = (e) => {
-    // console.log(e.key)
     if (e.key === "Escape") {
       setOpen(false);
     }
@@ -39,8 +39,6 @@ function DateRangeComp() {
 
   // Hide on outside click
   const hideOnClickOutside = (e) => {
-    // console.log(refOne.current)
-    // console.log(e.target)
     if (refOne.current && !refOne.current.contains(e.target)) {
       setOpen(false);
     }
@@ -55,7 +53,7 @@ function DateRangeComp() {
         )}`}
         readOnly
         className="inputBox"
-        onClick={() => setOpen((open) => !open)}
+        onClick={() => setOpen((x) => !x)}
       />
 
       <div ref={refOne}>

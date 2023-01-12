@@ -9,6 +9,7 @@ import Booking from "./components/Booking/Booking";
 import LandingPage from "./pages/LandingPage";
 import { CarContextProvider } from "./contexts/CarContext";
 import { UserContextProvider } from "./contexts/UserContext";
+import AddCar from "./components/AddCar/AddCar";
 
 function App() {
   return (
@@ -22,7 +23,9 @@ function App() {
             <Route path="/editcar" element={<EditCars />} />
             <Route path="/" element={<LandingPage />} />
             {/* TODO: testing route to remove after */}
-            <Route path="/booking/:id" element={<Booking />} />
+            <Route path="/manage" element={<AddCar />} />
+            <Route path="/book/:id" element={<Booking />} />
+            <Route path="/edit/:id" element={<EditCars />} />
           </Routes>
         </CarContextProvider>
       </UserContextProvider>

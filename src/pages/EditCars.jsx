@@ -1,3 +1,8 @@
+/* eslint-disable react/button-has-type */
+/* eslint-disable no-restricted-syntax */
+/* eslint-disable no-alert */
+/* eslint-disable radix */
+/* eslint-disable no-unused-vars */
 import React, { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -55,7 +60,7 @@ function EditCars() {
   const submitForm = () => {
     alert(kilometersAdd + " where added to this car!");
     if (kilometersAdd !== 0 || kilometersAdd !== null) {
-      alert("This car has " + kilometersNow + " Km's now!");
+      alert(`This car has ${kilometersNow} Km's now!`);
       axios
         .patch(`http://localhost:5000/cars/${carId}`, {
           kilometer: kilometersNow,
@@ -64,7 +69,7 @@ function EditCars() {
           console.log("CarUpdate", response);
         });
     } else {
-      alert("This car has " + kilometersOld + " Km's now!");
+      alert(`This car has ${kilometersOld} Km's now!`);
     }
     if (form.elements[1].checked === true) {
       axios

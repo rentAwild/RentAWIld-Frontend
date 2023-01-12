@@ -1,3 +1,6 @@
+/* eslint-disable react/destructuring-assignment */
+/* eslint-disable react/prop-types */
+/* eslint-disable no-restricted-syntax */
 /* eslint-disable no-nested-ternary */
 import React, { useState } from "react";
 import styled from "styled-components";
@@ -12,7 +15,7 @@ import {
 } from "./SideBarData";
 import SubMenu from "./SubMenu";
 import Logo from "../../assets/rentAwild-logo.png";
-import LogoUser from "../../assets/welcome-logo.png";
+/* import LogoUser from "../../assets/welcome-logo.png"; */
 import "./SideBar.css";
 
 const Nav = styled.div`
@@ -52,7 +55,7 @@ const SidebarWrap = styled.div`
 
 function Sidebar(props) {
   const [sidebar, setSidebar] = useState(true);
-  console.log(props);
+  // console.log(props);
 
   // eslint-disable-next-line no-unused-vars
   const showSidebar = () => setSidebar(!sidebar);
@@ -62,7 +65,7 @@ function Sidebar(props) {
     <IconContext.Provider value={{ color: "#fff" }}>
       <Nav className="nav">
         <div className="nav-welcome">
-          <p className="welcome-text">Hello {props.type}</p>
+          <p className="welcome-text">Hello {props.userName}</p>
           <AccountCircleIcon fontSize="large" className="welcome-logo" />
           {/* <img alt="user" className="welcome-logo" src={LogoUser} /> */}
         </div>
