@@ -34,9 +34,11 @@ function DashboardComponent(props) {
   const [carName, setName] = useState();
   const [type, setType] = useState();
   const [CompanyName, setCompanyName] = useState();
+  const [Companies, setCompanies] = useState();
   const [max_price, setMax_price] = useState(500);
   const [min_price, setMin_price] = useState(0);
   const [allTypes, setAllTypes] = useState();
+  const [inputValue, setInputValue] = useState();
 
   const fetchTypes = () => {
     axios
@@ -49,8 +51,22 @@ function DashboardComponent(props) {
         console.error("Error:", error);
       });
   };
+  const fetchCompanies = () => {
+    axios
+      .get(`http://localhost:5000/Companies`)
+      .then((response) => {
+        setCompanies(...[response.data]);
+      })
+      .catch((error) => {
+        // setUserNotFound(true);
+        console.error("Error:", error);
+      });
+  };
 
-  useEffect(() => fetchTypes, []);
+  useEffect(() => {
+    fetchTypes();
+    fetchCompanies();
+  }, []);
 
   const Obj = {
     type,
@@ -69,8 +85,21 @@ function DashboardComponent(props) {
   const handleMax = (e) => {
     setMax_price(e.target.value);
   };
-  const handleChange = (event) => {
+  const handleTypeChange = (event) => {
     setType(event.target.value);
+  };
+  const handleCompanyChange = (event) => {
+    setCompanyName(event.target.value);
+  };
+  const handleInputChange = (event) => {
+    event.preventDefault();
+    setInputValue(event.target.value);
+    console.log(event.target.value);
+  };
+  const handleInputSubmit = (event) => {
+    event.preventDefault();
+    setName(inputValue);
+    console.log(inputValue);
   };
   const [carId, setCarId] = useState(null);
 
@@ -103,18 +132,45 @@ function DashboardComponent(props) {
             value={`${max_price}`}
             onInput={handleMax}
           />
-          <br />
-          <br />
-          <label htmlFor="dropdownBox"> </label>
-          <select name="dropdownBox" value={type} onChange={handleChange}>
-            <option value="All">Select a car type:</option>
-            {allTypes &&
-              allTypes.map((element, i) => (
-                <option value={element.type} key={i}>
-                  {element.type}
-                </option>
-              ))}
-          </select>
+        </form>
+        <br />
+        <label htmlFor="dropdownBox"> </label>
+        <select
+          name="dropdownBox"
+          value={CompanyName}
+          onChange={handleCompanyChange}
+        >
+          <option value="All">Select a company:</option>
+          {Companies &&
+            Companies.map((element, i) => (
+              <option value={element.name} key={i}>
+                {element.name}
+              </option>
+            ))}
+        </select>
+        <label htmlFor="dropdownBox"> </label>
+        <select name="dropdownBox" value={type} onChange={handleTypeChange}>
+          <option value="All">Select a car type:</option>
+          {allTypes &&
+            allTypes.map((element, i) => (
+              <option value={element.type} key={i}>
+                {element.type}
+              </option>
+            ))}
+        </select>
+        <br />
+        <br />
+        <form onSubmit={handleInputSubmit}>
+          <label>
+            Search for a car:
+            <input
+              type="text"
+              name="name"
+              value={`${inputValue}`}
+              onChange={handleInputChange}
+            />
+          </label>
+          <input type="submit" value="Submit" />
         </form>
       </div>
       <br />

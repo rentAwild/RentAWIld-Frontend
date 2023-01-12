@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable no-restricted-syntax */
 import axios from "axios";
 import React, { useEffect, useState } from "react";
@@ -120,7 +121,7 @@ function Booking() {
               <DatePicker
                 className="calendar"
                 dateFormat="dd-MM-yyyy"
-                selectsRange={true}
+                selectsRange
                 startDate={startDate}
                 endDate={endDate}
                 onChange={(update) => {
