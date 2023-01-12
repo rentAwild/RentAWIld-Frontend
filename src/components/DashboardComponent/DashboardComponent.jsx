@@ -1,3 +1,6 @@
+/* eslint-disable react/destructuring-assignment */
+/* eslint-disable react/prop-types */
+/* eslint-disable no-restricted-syntax */
 import * as React from "react";
 import { useContext } from "react";
 import Box from "@mui/material/Box";
@@ -16,6 +19,7 @@ import "./DashboardComponent.css";
 
 function DashboardComponent(props) {
   const { cars } = useContext(CarContext);
+  // eslint-disable-next-line react/destructuring-assignment
   console.log(props.type);
 
   return (
@@ -33,6 +37,7 @@ function DashboardComponent(props) {
           {cars &&
             cars.map((element, key) => {
               return (
+                // eslint-disable-next-line react/no-array-index-key
                 <Grid item xs={4} key={key}>
                   <Card sx={{ maxWidth: 345 }}>
                     <CardMedia
