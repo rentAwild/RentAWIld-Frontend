@@ -1,3 +1,6 @@
+/* eslint-disable react/destructuring-assignment */
+/* eslint-disable react/prop-types */
+/* eslint-disable no-restricted-syntax */
 /* eslint-disable no-nested-ternary */
 import React, { useState } from "react";
 import styled from "styled-components";
@@ -12,7 +15,7 @@ import {
 } from "./SideBarData";
 import SubMenu from "./SubMenu";
 import Logo from "../../assets/rentAwild-logo.png";
-import LogoUser from "../../assets/welcome-logo.png";
+/* import LogoUser from "../../assets/welcome-logo.png"; */
 import "./SideBar.css";
 
 const Nav = styled.div`

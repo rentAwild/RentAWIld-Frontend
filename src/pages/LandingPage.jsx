@@ -9,7 +9,8 @@ function LandingPage() {
       <div className="text-button-container">
         <div className="text-container">
           <h2 className="quote">
-            “ The car has become an article of dress without which we feel uncertain, unclad, and incomplete in the urban compound. "
+            “ The car has become an article of dress without which we feel
+            uncertain, unclad, and incomplete in the urban compound. "
           </h2>
           <p className="quote-name">-Marshall McLuhan-</p>
         </div>

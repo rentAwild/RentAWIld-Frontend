@@ -8,8 +8,8 @@ import "./DashboardPage.css";
 function DashboardPage() {
   const { typeOfUser } = useContext(UserContext);
   // eslint-disable-next-line no-restricted-syntax
-  console.log(typeOfUser);
-  return (
+  /*   console.log(typeOfUser);
+   */ return (
     <div>
       <SideBar type={typeOfUser} />
       <div className="dashboard">
