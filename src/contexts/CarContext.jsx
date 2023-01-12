@@ -13,7 +13,7 @@ export function CarContextProvider({ children }) {
     axios
       .get(`http://localhost:5000/cars`)
       .then((response) => {
-        setCars(response.data[0]);
+        setCars(response.data);
       })
       .catch((error) => {
         // setUserNotFound(true);
