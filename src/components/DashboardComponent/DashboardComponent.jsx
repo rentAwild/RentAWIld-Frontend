@@ -40,6 +40,22 @@ function DashboardComponent(props) {
   const [allTypes, setAllTypes] = useState();
   const [inputValue, setInputValue] = useState("");
 
+  const [typeOfUser, setTypeOfUser] = useState("");
+  const [userName, setUserName] = useState("");
+  const [userId, setUserId] = useState("");
+
+  useEffect(() => {
+    if (localStorage.getItem("userType") !== 0) {
+      setTypeOfUser(localStorage.getItem("userType"));
+    }
+    if (localStorage.getItem("userName") !== 0) {
+      setUserName(localStorage.getItem("userName"));
+    }
+    if (localStorage.getItem("userId") !== 0) {
+      setUserId(localStorage.getItem("userId"));
+    }
+  }, []);
+
   const fetchTypes = () => {
     axios
       .get(`http://localhost:5000/types/cars`)
@@ -102,168 +118,102 @@ function DashboardComponent(props) {
     console.log(inputValue);
   };
   const [carId, setCarId] = useState(null);
-
+  const deleteCompany = (id) => {
+    console.log(id);
+    axios
+      .delete(`http://localhost:5000/users/${id}`)
+      .then(() => window.location.reload(true))
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+  };
   return (
     <div>
-      <div className="filters">
-        <h2>Select some filters!</h2>
-        <form id="price-range-form">
-          <label htmlFor="min-price" className="form-label">
-            Min price: {`${min_price}`}
-          </label>
-          <input
-            type="range"
-            min="0"
-            max="300"
-            step="1"
-            value={`${min_price}`}
-            onInput={handleMin}
-          />
-          <label htmlFor="max-price" className="form-label">
-            Max price: {`${max_price}`}
-          </label>
-          <input
-            type="range"
-            className="form-range"
-            min="200"
-            max="500"
-            id="max-price"
-            step="1"
-            value={`${max_price}`}
-            onInput={handleMax}
-          />
-        </form>
-        <br />
-        <label htmlFor="dropdownBox"> </label>
-        <select
-          name="dropdownBox"
-          value={CompanyName}
-          onChange={handleCompanyChange}
-          className="select-company"
-        >
-          <option  value="All">Select a company:</option>
-          {Companies &&
-            Companies.map((element, i) => (
-              <option value={element.name} key={i}>
-                {element.name}
-              </option>
-            ))}
-        </select>
-        <label htmlFor="dropdownBox"> </label>
-        <select className="select-car" name="dropdownBox" value={type} onChange={handleTypeChange}>
-          <option value="All">Select a car type:</option>
-          {allTypes &&
-            allTypes.map((element, i) => (
-              <option value={element.type} key={i}>
-                {element.type}
-              </option>
-            ))}
-        </select>
-        <br />
-        <br />
-        <form onSubmit={handleInputSubmit}>
-          <label>
-            Search for a car:
-            <input
-              type="text"
-              name="name"
-              value={`${inputValue}`}
-              onChange={handleInputChange}
-            />
-          </label>
-        </form>
-      </div>
-      <br />
+      {typeOfUser === "user" ? (
+        <>
+          <div className="filters">
+            <h2>Select some filters!</h2>
+            <form id="price-range-form">
+              <label htmlFor="min-price" className="form-label">
+                Min price: {`${min_price}`}
+              </label>
+              <input
+                type="range"
+                min="0"
+                max="300"
+                step="1"
+                value={`${min_price}`}
+                onInput={handleMin}
+              />
+              <label htmlFor="max-price" className="form-label">
+                Max price: {`${max_price}`}
+              </label>
+              <input
+                type="range"
+                className="form-range"
+                min="200"
+                max="500"
+                id="max-price"
+                step="1"
+                value={`${max_price}`}
+                onInput={handleMax}
+              />
+            </form>
+            <br />
+            <label htmlFor="dropdownBox"> </label>
+            <select
+              name="dropdownBox"
+              value={CompanyName}
+              onChange={handleCompanyChange}
+            >
+              <option value="All">Select a company:</option>
+              {Companies &&
+                Companies.map((element, i) => (
+                  <option value={element.name} key={i}>
+                    {element.name}
+                  </option>
+                ))}
+            </select>
+            <label htmlFor="dropdownBox"> </label>
+            <select name="dropdownBox" value={type} onChange={handleTypeChange}>
+              <option value="All">Select a car type:</option>
+              {allTypes &&
+                allTypes.map((element, i) => (
+                  <option value={element.type} key={i}>
+                    {element.type}
+                  </option>
+                ))}
+            </select>
+            <br />
+            <br />
+            <form onSubmit={handleInputSubmit}>
+              <label>
+                Search for a car:
+                <input
+                  type="text"
+                  name="name"
+                  value={`${inputValue}`}
+                  onChange={handleInputChange}
+                />
+              </label>
+            </form>
+          </div>
+          <br />
+        </>
+      ) : typeOfUser === "company" ? (
+        <>
+          <h2 className="mainTitle">This is all your cars in our platform!</h2>
+          <hr />
+          <br />
+        </>
+      ) : null}
       <Box sx={{ flexGrow: 1 }}>
         <Grid container spacing={2}>
-          {props.type === "company"
-            ? cars &&
-              cars
-                .filter((e) => e.user_id == props.userId)
-                .map((element, key) => {
-                  return (
-                    <Grid item xs={4} key={key}>
-                      <Card sx={{ maxWidth: 345 }}>
-                        <CardMedia
-                          sx={{ height: 140 }}
-                          image={element.image}
-                          title={element.carName}
-                        />
-                        <CardContent>
-                          <Typography gutterBottom variant="h5" component="div">
-                            {element.carName}
-                          </Typography>
-                          <Typography variant="body2" color="text.secondary">
-                            {element.daily_price}
-                          </Typography>
-                          <Typography variant="body2" color="text.secondary">
-                            {element.type}
-                          </Typography>
-                        </CardContent>
-                        <CardActions>
-                          {props.type === "user" ? (
-                            <a
-                              href={`http://localhost:3000/book/${element.id}`}
-                            >
-                              Learn More
-                            </a>
-                          ) : props.type === "company" ? (
-                            <a
-                              href={`http://localhost:3000/edit/${element.id}`}
-                            >
-                              Learn More
-                            </a>
-                          ) : null}
-                        </CardActions>
-                      </Card>
-                    </Grid>
-                  );
-                })
-            : cars && inputValue
-            ? cars
-                .filter((car) => {
-                  return car.carName.includes(inputValue);
-                })
-                .map((element, key) => {
-                  return (
-                    <Grid item xs={4} key={key}>
-                      <Card sx={{ maxWidth: 345 }}>
-                        <CardMedia
-                          sx={{ height: 140 }}
-                          image={element.image}
-                          title={element.carName}
-                        />
-                        <CardContent>
-                          <Typography gutterBottom variant="h5" component="div">
-                            {element.carName}
-                          </Typography>
-                          <Typography variant="body2" color="text.secondary">
-                            {element.daily_price}
-                          </Typography>
-                          <Typography variant="body2" color="text.secondary">
-                            {element.type}
-                          </Typography>
-                        </CardContent>
-                        <CardActions>
-                          {props.type === "user" ? (
-                            <a
-                              href={`http://localhost:3000/book/${element.id}`}
-                            >
-                              Learn More
-                            </a>
-                          ) : props.type === "company" ? (
-                            <a
-                              href={`http://localhost:3000/edit/${element.id}`}
-                            >
-                              Learn More
-                            </a>
-                          ) : null}
-                        </CardActions>
-                      </Card>
-                    </Grid>
-                  );
-                })
-            : cars.map((element, key) => {
+          {props.type === "company" ? (
+            cars &&
+            cars
+              .filter((e) => e.user_id == props.userId)
+              .map((element, key) => {
                 return (
                   <Grid item xs={4} key={key}>
                     <Card sx={{ maxWidth: 345 }}>
@@ -297,7 +247,109 @@ function DashboardComponent(props) {
                     </Card>
                   </Grid>
                 );
-              })}
+              })
+          ) : `${typeOfUser}` === "user" ? (
+            cars && inputValue ? (
+              cars
+                .filter((car) => {
+                  return car.carName
+                    .toLowerCase()
+                    .includes(inputValue.toLowerCase());
+                })
+                .map((element, key) => {
+                  return (
+                    <Grid item xs={4} key={key}>
+                      <Card sx={{ maxWidth: 345 }}>
+                        <CardMedia
+                          sx={{ height: 140 }}
+                          image={element.image}
+                          title={element.carName}
+                        />
+                        <CardContent>
+                          <Typography gutterBottom variant="h5" component="div">
+                            {element.carName}
+                          </Typography>
+                          <Typography variant="body2" color="text.secondary">
+                            {element.daily_price}
+                          </Typography>
+                          <Typography variant="body2" color="text.secondary">
+                            {element.type}
+                          </Typography>
+                        </CardContent>
+                        <CardActions>
+                          {props.type === "user" ? (
+                            <a
+                              href={`http://localhost:3000/book/${element.id}`}
+                            >
+                              Learn More
+                            </a>
+                          ) : props.type === "company" ? (
+                            <a
+                              href={`http://localhost:3000/edit/${element.id}`}
+                            >
+                              Learn More
+                            </a>
+                          ) : null}
+                        </CardActions>
+                      </Card>
+                    </Grid>
+                  );
+                })
+            ) : (
+              cars.map((element, key) => {
+                return (
+                  <Grid item xs={4} key={key}>
+                    <Card sx={{ maxWidth: 345 }}>
+                      <CardMedia
+                        sx={{ height: 140 }}
+                        image={element.image}
+                        title={element.carName}
+                      />
+                      <CardContent>
+                        <Typography gutterBottom variant="h5" component="div">
+                          {element.carName}
+                        </Typography>
+                        <Typography variant="body2" color="text.secondary">
+                          {element.daily_price}
+                        </Typography>
+                        <Typography variant="body2" color="text.secondary">
+                          {element.type}
+                        </Typography>
+                      </CardContent>
+                      <CardActions>
+                        {props.type === "user" ? (
+                          <a href={`http://localhost:3000/book/${element.id}`}>
+                            Learn More
+                          </a>
+                        ) : props.type === "company" ? (
+                          <a href={`http://localhost:3000/edit/${element.id}`}>
+                            Learn More
+                          </a>
+                        ) : null}
+                      </CardActions>
+                    </Card>
+                  </Grid>
+                );
+              })
+            )
+          ) : (
+            <h2 className="mainTitle">Manage your Companies:</h2>
+          )}
+          {Companies
+            ? Companies.map((company, key) => {
+                return (
+                  <div key={key}>
+                    <h4>{company.name}</h4>
+                    <button
+                      type="submit"
+                      onClick={() => deleteCompany(company.id)}
+                    >
+                      Delete Company
+                    </button>
+                  </div>
+                );
+              })
+            : null}
         </Grid>
       </Box>
     </div>
