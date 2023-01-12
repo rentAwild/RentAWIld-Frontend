@@ -17,7 +17,6 @@ export function UserContextProvider({ children }) {
         /*         console.log(response.data); */
         setTypeOfUser(response.data[0][0][0].type);
         localStorage.setItem("userType", response.data[0][0][0].type);
-
         setUserId(response.data[0][0][0].id);
       })
       .catch((error) => {

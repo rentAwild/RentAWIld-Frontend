@@ -1,3 +1,4 @@
+/* eslint-disable eqeqeq */
 /* eslint-disable react/destructuring-assignment */
 /* eslint-disable react/prop-types */
 /* eslint-disable no-restricted-syntax */
@@ -14,15 +15,14 @@ import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import CarContext from "../../contexts/CarContext";
+import UserContext from "../../contexts/UserContext";
 
 import "./DashboardComponent.css";
 
 function DashboardComponent(props) {
   const { cars } = useContext(CarContext);
-  // console.log(cars);
+  const { userId } = useContext(UserContext);
   // eslint-disable-next-line react/destructuring-assignment
-  // console.log(props.type);
-
   return (
     <div>
       <Box
@@ -35,34 +35,37 @@ function DashboardComponent(props) {
       <Box sx={{ flexGrow: 1 }}>
         <Grid container spacing={2}>
           {cars &&
-            cars.map((element, key) => {
-              return (
-                <Grid item xs={4} key={key}>
-                  <Card sx={{ maxWidth: 345 }}>
-                    <CardMedia
-                      sx={{ height: 140 }}
-                      image={element.image}
-                      title={element.name}
-                    />
-                    <CardContent>
-                      <Typography gutterBottom variant="h5" component="div">
-                        {element.name}
-                      </Typography>
-                      <Typography variant="body2" color="text.secondary">
-                        {element.daily_price}
-                      </Typography>
-                      <Typography variant="body2" color="text.secondary">
-                        {element.type}
-                      </Typography>
-                    </CardContent>
-                    <CardActions>
-                      <Button size="small">Share</Button>
-                      <Button size="small">Learn More</Button>
-                    </CardActions>
-                  </Card>
-                </Grid>
-              );
-            })}
+            cars
+              .filter((e) => e.user_id == userId)
+              .map((element, key) => {
+                return (
+                  <Grid item xs={4} key={key}>
+                    <Card sx={{ maxWidth: 345 }}>
+                      <CardMedia
+                        sx={{ height: 140 }}
+                        image={element.image}
+                        title={element.name}
+                      />
+                      <CardContent>
+                        <Typography gutterBottom variant="h5" component="div">
+                          {element.name}
+                        </Typography>
+                        <Typography variant="body2" color="text.secondary">
+                          {element.daily_price}
+                        </Typography>
+                        <Typography variant="body2" color="text.secondary">
+                          {element.type}
+                        </Typography>
+                      </CardContent>
+                      <CardActions>
+                        <a href={`http://localhost:3000/booking/${element.id}`}>
+                          Learn More
+                        </a>
+                      </CardActions>
+                    </Card>
+                  </Grid>
+                );
+              })}
         </Grid>
       </Box>
     </div>
