@@ -1,21 +1,13 @@
 import React from "react";
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
-
 import DashboardPage from "./pages/DashboardPage";
-
 import SignInPage from "./pages/SignInPage";
-
 import SignUpPage from "./pages/SignUpPage";
-
 import EditCars from "./pages/EditCars";
-
 import Booking from "./components/Booking/Booking";
-
 import LandingPage from "./pages/LandingPage";
-
 import { CarContextProvider } from "./contexts/CarContext";
-
 import { UserContextProvider } from "./contexts/UserContext";
 
 function App() {
