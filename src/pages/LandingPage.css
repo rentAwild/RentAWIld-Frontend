@@ -23,6 +23,8 @@ video {
   position: fixed;
   bottom: 0;
   padding: 40px;
+  border-style: groove;
+  margin: 50px;
 }
 
 .text-container {
@@ -35,13 +37,13 @@ video {
   margin-top: 0;
   margin-bottom: 5px;
   font: 40px Fantasy;
-  text-align: end;
+  text-align: center;
 }
 
 .quote-name {
   margin-top: 0;
   font: 20px Fantasy;
-  text-align: end;
+  text-align: center;
 }
 
 .button-container {

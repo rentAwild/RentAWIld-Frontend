@@ -9,10 +9,10 @@ function LandingPage() {
       <div className="text-button-container">
         <div className="text-container">
           <h2 className="quote">
-            “If you are clinically insane, by which I mean you wake up in the
-            morning, and you think you are an onion, this is your car"
+            “ The car has become an article of dress without which we feel
+            uncertain, unclad, and incomplete in the urban compound. "
           </h2>
-          <p className="quote-name">-Jeremy Clarkson-</p>
+          <p className="quote-name">-Marshall McLuhan-</p>
         </div>
         <div className="button-container">
           <a href="/signIn">
