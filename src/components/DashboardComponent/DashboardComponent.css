@@ -7,3 +7,20 @@
 .mainTitle {
   text-align: center;
 }
+.select-company {
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  font-weight: 200;
+  font-size: 1rem;
+  line-height: 1.334;
+  letter-spacing: 0em;
+  margin-bottom: 0.35em;
+}
+
+.select-car {
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  font-weight: 200;
+  font-size: 1rem;
+  line-height: 1.334;
+  letter-spacing: 0em;
+  margin-bottom: 0.35em;
+}
