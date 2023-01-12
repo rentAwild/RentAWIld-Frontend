@@ -1,3 +1,5 @@
+/* eslint-disable no-nested-ternary */
+/* eslint-disable eqeqeq */
 // eslint-disable-next-line react/destructuring-assignment
 /* eslint-disable react/no-array-index-key */
 /* eslint-disable no-unused-vars */
@@ -20,14 +22,15 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import axios from "axios";
 import CarContext from "../../contexts/CarContext";
+import UserContext from "../../contexts/UserContext";
 
 import "./DashboardComponent.css";
 
-function DashboardComponent() {
+function DashboardComponent(props) {
+  // eslint-disable-next-line react/destructuring-assignment
   const { cars, fetchCars } = useContext(CarContext);
 
   const navigate = useNavigate();
-  /*   console.log(props.type); */
   const [carName, setName] = useState();
   const [type, setType] = useState();
   const [CompanyName, setCompanyName] = useState();
@@ -72,7 +75,6 @@ function DashboardComponent() {
     min_price,
     carName,
   };
-  /*  console.log(Obj) */
 
   useEffect(() => {
     fetchCars(Obj);
@@ -100,6 +102,7 @@ function DashboardComponent() {
     console.log(inputValue);
   };
   const [carId, setCarId] = useState(null);
+
   return (
     <div>
       <div className="filters">
@@ -173,35 +176,85 @@ function DashboardComponent() {
       <br />
       <Box sx={{ flexGrow: 1 }}>
         <Grid container spacing={2}>
-          {cars &&
-            cars.map((element) => {
-              return (
-                <Grid item xs={4} key={element.id}>
-                  <Card sx={{ maxWidth: 345 }}>
-                    <CardMedia
-                      sx={{ height: 140 }}
-                      image={element.image}
-                      title={element.name}
-                    />
-                    <CardContent>
-                      <Typography gutterBottom variant="h7" component="div">
-                        Car: {element.carName}
-                      </Typography>
-                      <Typography variant="body3" color="text.secondary">
-                        Price: {element.daily_price}
-                      </Typography>
-                      <Typography variant="body2" color="text.secondary">
-                        Car type: {element.type}
-                      </Typography>
-                    </CardContent>
-                    <CardActions>
-                      <Button size="small">Share</Button>
-                      <Button size="small">Learn More</Button>
-                    </CardActions>
-                  </Card>
-                </Grid>
-              );
-            })}
+          {props.type === "company"
+            ? cars &&
+              cars
+                .filter((e) => e.user_id == props.userId)
+                .map((element, key) => {
+                  return (
+                    <Grid item xs={4} key={key}>
+                      <Card sx={{ maxWidth: 345 }}>
+                        <CardMedia
+                          sx={{ height: 140 }}
+                          image={element.image}
+                          title={element.name}
+                        />
+                        <CardContent>
+                          <Typography gutterBottom variant="h5" component="div">
+                            {element.name}
+                          </Typography>
+                          <Typography variant="body2" color="text.secondary">
+                            {element.daily_price}
+                          </Typography>
+                          <Typography variant="body2" color="text.secondary">
+                            {element.type}
+                          </Typography>
+                        </CardContent>
+                        <CardActions>
+                          {props.type === "user" ? (
+                            <a
+                              href={`http://localhost:3000/book/${element.id}`}
+                            >
+                              Learn More
+                            </a>
+                          ) : props.type === "company" ? (
+                            <a
+                              href={`http://localhost:3000/edit/${element.id}`}
+                            >
+                              Learn More
+                            </a>
+                          ) : null}
+                        </CardActions>
+                      </Card>
+                    </Grid>
+                  );
+                })
+            : cars &&
+              cars.map((element, key) => {
+                return (
+                  <Grid item xs={4} key={key}>
+                    <Card sx={{ maxWidth: 345 }}>
+                      <CardMedia
+                        sx={{ height: 140 }}
+                        image={element.image}
+                        title={element.name}
+                      />
+                      <CardContent>
+                        <Typography gutterBottom variant="h5" component="div">
+                          {element.name}
+                        </Typography>
+                        <Typography variant="body2" color="text.secondary">
+                          {element.daily_price}
+                        </Typography>
+                        <Typography variant="body2" color="text.secondary">
+                          {element.type}
+                        </Typography>
+                      </CardContent>
+                      <CardActions>
+                        {props.type === "user" ? (
+                          <a href={`http://localhost:3000/book/${element.id}`}>
+                            Learn More
+                          </a>
+                        ) : props.type === "company" ? (
+                          <a href={`http://localhost:3000/edit/${element.id}`}>
+                            Learn More
+                          </a>
+                        ) : null}
+                      </CardActions>
+                    </Card>
+                  </Grid>
+                );
+              })}
         </Grid>
       </Box>
     </div>

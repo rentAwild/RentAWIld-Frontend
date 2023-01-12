@@ -85,7 +85,7 @@ export function CarContextProvider({ children }) {
         console.error("Error:", error);
       });
   };
-  // console.log(cars);
+
   // Loading the data on mounting
   useEffect(() => fetchCars, []);
 

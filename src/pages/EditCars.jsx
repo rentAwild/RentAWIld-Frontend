@@ -51,10 +51,6 @@ function EditCars() {
     }
   };
 
-  console.log(kilometersOld);
-  console.log(kilometersAdd);
-  console.log(kilometersNow);
-
   // * Button to Return to Dashboard # ========== #
   const navigateReturn = useNavigate();
   const returnDashboard = () => {
