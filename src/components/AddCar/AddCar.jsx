@@ -1,5 +1,6 @@
 import * as React from "react";
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
@@ -13,6 +14,22 @@ import SideBar from "../SideBar/SideBar";
 import "./AddCar.css";
 
 function AddCar() {
+  const [typeOfUser, setTypeOfUser] = useState("");
+  const [userName, setUserName] = useState("");
+  const [userId, setUserId] = useState("");
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (localStorage.getItem("userType") !== 0) {
+      setTypeOfUser(localStorage.getItem("userType"));
+    }
+    if (localStorage.getItem("userName") !== 0) {
+      setUserName(localStorage.getItem("userName"));
+    }
+    if (localStorage.getItem("userId") !== 0) {
+      setUserId(localStorage.getItem("userId"));
+    }
+  }, []);
   const theme = createTheme({
     status: {
       danger: "#e53e3e",
@@ -42,39 +59,27 @@ function AddCar() {
   console.log(carDetails);
   const handleSubmit = (event) => {
     event.preventDefault();
+    console.log(carDetails.Img);
     axios
       .post("http://localhost:5000/Cars", [
         {
           carName: carDetails.carName,
-          image: carDetails.Img,
+          image: carDetails.carImg,
           maintenance: 0,
           type: carDetails.carType,
           kilometer: carDetails.carKm,
           daily_price: carDetails.carPrice,
           CompanyName: "Abc",
-          user_id: 3,
+          user_id: userId,
         },
       ])
       .then()
       .catch((err) => {
         console.error(err);
       });
+    navigate("/dashboard");
   };
-  const [typeOfUser, setTypeOfUser] = useState("");
-  const [userName, setUserName] = useState("");
-  const [userId, setUserId] = useState("");
 
-  useEffect(() => {
-    if (localStorage.getItem("userType") !== 0) {
-      setTypeOfUser(localStorage.getItem("userType"));
-    }
-    if (localStorage.getItem("userName") !== 0) {
-      setUserName(localStorage.getItem("userName"));
-    }
-    if (localStorage.getItem("userId") !== 0) {
-      setUserId(localStorage.getItem("userId"));
-    }
-  }, []);
   return (
     <>
       <SideBar type={typeOfUser} userId={userId} userName={userName} />{" "}

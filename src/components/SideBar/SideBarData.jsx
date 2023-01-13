@@ -29,13 +29,8 @@ export const SidebarCompanyData = [
   },
   {
     title: "Manage Fleet",
-    /* path: "/products", */
+    path: "/manage",
     icon: <FaIcons.FaCartPlus />,
-  },
-  {
-    title: "Account",
-    /* path: "/team", */
-    icon: <IoIcons.IoMdPeople />,
   },
 ];
 export const SidebarAdminData = [
@@ -48,10 +43,5 @@ export const SidebarAdminData = [
     title: "Company Overview",
     /* path: "/reports", */
     icon: <IoIcons.IoIosPaper />,
-  },
-  {
-    title: "Account",
-    /* path: "/team", */
-    icon: <IoIcons.IoMdPeople />,
   },
 ];
