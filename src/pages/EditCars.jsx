@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/img-redundant-alt */
 /* eslint-disable react/button-has-type */
 /* eslint-disable no-restricted-syntax */
 /* eslint-disable no-alert */
@@ -63,7 +64,7 @@ function EditCars() {
   const submitForm = () => {
     console.log(form.elements[3].checked);
 
-    alert(kilometersAdd + " where added to this car!");
+    alert(`${kilometersAdd} where added to this car!`);
     if (kilometersAdd !== 0 || kilometersAdd !== null) {
       alert(`This car has ${kilometersNow} Km's now!`);
       axios
@@ -79,7 +80,7 @@ function EditCars() {
     if (form.elements[1].checked === true) {
       axios
         .patch(`http://localhost:5000/carmaintenance/${carId}`, {
-          maintenance: maintenance,
+          maintenance,
         })
         .then((response) => {
           console.log("CarUpdate", response);
@@ -87,7 +88,7 @@ function EditCars() {
     } else {
       axios
         .patch(`http://localhost:5000/carmaintenance/${carId}`, {
-          maintenance: maintenance,
+          maintenance,
         })
         .then((response) => {
           console.log("CarUpdate", response);
