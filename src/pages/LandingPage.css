@@ -1,0 +1,85 @@
+.landing-container {
+  height: 100%;
+  width: 100%;
+  /*  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center; */
+  position: relative;
+  width: 100%;
+  height: auto;
+}
+video {
+  position: absolute;
+  width: 100%;
+  height: auto;
+  z-index: -3;
+}
+.company-name-container{
+  display: table-cell;
+  width: 280px;
+  height: 400px;
+  padding-left: 250%;
+  vertical-align: middle;
+  
+}
+.company-name{
+  color: white;
+  margin: 0;
+  font: 50px Fantasy;
+  position: absolute;
+}
+
+
+
+.text-button-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  bottom: 0;
+  padding: 40px;
+  border-style: groove;
+  margin: 50px;
+}
+
+.text-container {
+  color: white;
+  font-size: small;
+  margin-right: 10%;
+}
+
+.quote {
+  margin-top: 0;
+  margin-bottom: 5px;
+  font: 40px Fantasy;
+  text-align: center;
+}
+
+.quote-name {
+  margin-top: 0;
+  font: 20px Fantasy;
+  text-align: center;
+}
+
+.button-container {
+  display: flex;
+}
+
+.button {
+  background-image: none;
+  color: black;
+  cursor: pointer;
+  font-size: 100%;
+  font-weight: 900;
+  line-height: 1.5;
+  margin: 1em;
+  padding: 1em;
+  text-transform: uppercase;
+  border-radius: 99rem;
+  border-width: 0;
+  overflow: hidden;
+  padding: 0.8rem 3rem;
+  height: 100%;
+  width: 100%;
+}
