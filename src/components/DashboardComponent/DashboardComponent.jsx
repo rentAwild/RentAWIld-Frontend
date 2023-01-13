@@ -341,7 +341,7 @@ function DashboardComponent(props) {
                 ? Companies.map((company, key) => {
                     return (
                       <Grid item xs={4} key={key}>
-                        <Card>
+                        <Card sx={{ maxWidth: 345 }}>
                           <CardContent>
                             <Typography
                               gutterBottom
