@@ -6,6 +6,10 @@ function LandingPage() {
   return (
     <div className="landing-container">
       <video playsInline autoPlay muted loop poster="photo.jpg" src={video} />
+      <div className="company-name-container">
+        <h1 className="company-name">Rent A Wild</h1>
+      </div>
+
       <div className="text-button-container">
         <div className="text-container">
           <h2 className="quote">

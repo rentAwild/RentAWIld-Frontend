@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+/* import React, { useEffect, useState } from "react";
 
 function BookingList(props) {
   const { userId, type } = props;
@@ -14,4 +14,4 @@ function BookingList(props) {
   return <div>BookingList</div>;
 }
 
-export default BookingList;
+export default BookingList; */

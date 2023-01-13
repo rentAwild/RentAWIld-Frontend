@@ -15,6 +15,22 @@ video {
   height: auto;
   z-index: -3;
 }
+.company-name-container{
+  display: table-cell;
+  width: 280px;
+  height: 400px;
+  padding-left: 250%;
+  vertical-align: middle;
+  
+}
+.company-name{
+  color: white;
+  margin: 0;
+  font: 50px Fantasy;
+  position: absolute;
+}
+
+
 
 .text-button-container {
   display: flex;
