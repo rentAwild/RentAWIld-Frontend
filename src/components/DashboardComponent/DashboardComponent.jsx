@@ -202,7 +202,7 @@ function DashboardComponent(props) {
         </>
       ) : typeOfUser === "company" ? (
         <>
-          <h2 className="mainTitle">This is all your cars in our platform!</h2>
+          <h2 className="mainTitle">These are all the cars in your fleet</h2>
           <hr />
           <br />
         </>
