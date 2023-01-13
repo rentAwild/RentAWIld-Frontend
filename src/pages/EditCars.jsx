@@ -10,12 +10,16 @@ import axios from "axios";
 
 import "./EditCars.css";
 import CarContext from "../contexts/CarContext";
+import { useParams } from "react-router-dom";
 
 function EditCars() {
   // TODO This component should recieve the carId from the carCard when clicked
   const { cars } = useContext(CarContext);
-  const carId = 2;
+  const params = useParams();
+  const carId = parseInt(params.id, 10);
   const form = document.querySelector("form");
+  const car = cars.find((e) => e.id === carId);
+  console.log(car);
 
   const [kilometersOld, setKilometersOld] = useState(0);
   const [kilometersAdd, setKilometersAdd] = useState(0);
@@ -133,10 +137,7 @@ function EditCars() {
       <ul className="editCarForm">
         <li className="editCarFormListItem">
           Editing this the car:
-          <img
-            src="https://www.razaoautomovel.com/wp-content/uploads/2018/01/fiat_punto_sporting_20-e1516641314226_925x520_acf_cropped.jpeg"
-            alt="Image of this car"
-          />
+          <img src={car?.image} alt="Image of this car" />
         </li>
         <li className="editCarFormListItem">
           <h4>This car has {kilometersOld} Km's</h4>
